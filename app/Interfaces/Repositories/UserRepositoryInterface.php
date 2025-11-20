@@ -5,10 +5,9 @@ namespace App\Interfaces\Repositories;
 
 use App\Models\User;
 
-/**
- * @method User save(User $entity)
- */
-interface UserRepositoryInterface extends RepositoryInterface
+interface UserRepositoryInterface
 {
+    public function save(User $entity): User;
+
     public function get(string $username, string $phoneNumber): User|null;
 }

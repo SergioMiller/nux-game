@@ -42,18 +42,9 @@ swagger:
 app:
 		docker compose exec app sh
 
-.PHONY: redis
-redis:
-		docker compose exec redis sh
-
-.PHONY: node
-node:
-		docker compose exec node bash
-
 .PHONY: php-cs-fixer
 php-cs-fixer:
 		docker compose exec app sh -lc 'php-cs-fixer fix app/ config/ routes/ database/ tests/ --config=/var/www/.php-cs-fixer.php --allow-risky=yes'
-
 
 .PHONY: phpstan
 phpstan:

@@ -17,7 +17,8 @@ chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 chmod -R 777 /var/www/storage/logs
 
-composer install --no-dev --optimize-autoloader
+composer install
+php /var/www/artisan key:generate #For dev/local only
 php /var/www/artisan optimize >/dev/null 2>&1 || true
 php /var/www/artisan migrate
 php /var/www/artisan db:seed
