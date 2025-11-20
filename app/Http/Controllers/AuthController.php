@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Account\LoginRequest;
+use App\Http\Requests\Auth\LoginRequest;
 use App\Service\Account\AuthService;
 use App\Service\Account\Dto\LoginDto;
 use Illuminate\Contracts\View\View;

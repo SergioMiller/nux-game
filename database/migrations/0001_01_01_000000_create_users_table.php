@@ -10,8 +10,8 @@ return new class extends Migration {
     {
         Schema::create('users', static function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->string('phone_number')->unique();
+            $table->string('username');
+            $table->string('phone_number', 15);
             $table->timestamps();
         });
     }
