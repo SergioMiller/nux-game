@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Auth\LoginRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Service\Account\AuthService;
 use App\Service\Account\Dto\LoginDto;
 use Illuminate\Contracts\View\View;
@@ -15,12 +15,12 @@ final class AuthController extends Controller
     ) {
     }
 
-    public function showLoginForm(): View
+    public function showRegisterForm(): View
     {
-        return view('auth.login');
+        return view('auth.register');
     }
 
-    public function login(LoginRequest $request): View
+    public function register(RegisterRequest $request): View
     {
         $user = $this->accountService->login(LoginDto::fromArray($request->validated()));
         dd($user);
