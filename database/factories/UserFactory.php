@@ -17,7 +17,7 @@ final class UserFactory extends Factory
     {
         return [
             'username' => fake()->name(),
-            'phone_number' => fake()->unique()->phoneNumber(),
+            'phone_number' => fake()->unique()->randomDigit(),
         ];
     }
 }

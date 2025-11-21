@@ -4,21 +4,25 @@ declare(strict_types=1);
 namespace App\Service\Game;
 
 use App\Interfaces\Repositories\RoundRepositoryInterface;
+use App\Interfaces\Services\RandomizerInterface;
 use App\Models\Link;
 use App\Models\Round;
 use League\CommonMark\Exception\LogicException;
 
+/**
+ * @see GameServiceTest
+ */
 readonly class GameService
 {
     public function __construct(
+        private RandomizerInterface $randomizer,
         private RoundRepositoryInterface $roundRepository,
     ) {
     }
 
     public function play(Link $link): Round
     {
-        $randomNumber = rand(0, 1000);
-
+        $randomNumber = $this->randomizer->getInt(0, 1000);
         $winValue = $this->getWinValue($randomNumber);
 
         $round = new Round();
@@ -37,7 +41,7 @@ readonly class GameService
             $randomNumber > 900 => $randomNumber * 0.7,
             $randomNumber > 600 => $randomNumber * 0.5,
             $randomNumber > 300 => $randomNumber * 0.3,
-            $randomNumber <= 300 => $randomNumber * 0.1,
+            $randomNumber > 0 && $randomNumber <= 300 => $randomNumber * 0.1,
             default => throw new LogicException('Invalid random number.')
         };
 
