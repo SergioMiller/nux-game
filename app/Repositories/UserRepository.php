@@ -18,8 +18,8 @@ final class UserRepository implements UserRepositoryInterface
     public function get(string $username, string $phoneNumber): User|null
     {
         return User::query()
-            ->where(['username' => $username])
-            ->where(['phone_number' => $phoneNumber])
+            ->where('username', $username)
+            ->where('phone_number', $phoneNumber)
             ->first();
     }
 }

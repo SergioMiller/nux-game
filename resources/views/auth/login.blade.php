@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <form class="max-w-sm mx-auto" method="post" action="{{ route('auth.register') }}">
+    <form class="max-w-sm mx-auto" method="post" action="{{ route('auth.login') }}">
         @csrf
 
         <div class="mb-5">

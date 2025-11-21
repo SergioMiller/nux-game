@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Service\Account\Dto;
+namespace App\Service\Auth\Dto;
 
 final readonly class LoginDto
 {

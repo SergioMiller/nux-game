@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Service\Account;
+namespace App\Service\Auth;
 
 use App\Interfaces\Repositories\UserRepositoryInterface;
 use App\Models\User;
-use App\Service\Account\Dto\LoginDto;
+use App\Service\Auth\Dto\LoginDto;
 
 final readonly class AuthService
 {
@@ -16,7 +16,10 @@ final readonly class AuthService
 
     public function login(LoginDto $data): User
     {
-        $user = $this->userRepository->get($data->getUsername(), $data->getPhoneNumber());
+        $user = $this->userRepository->get(
+            username: $data->getUsername(),
+            phoneNumber: $data->getPhoneNumber()
+        );
 
         if (null !== $user) {
             return $user;
